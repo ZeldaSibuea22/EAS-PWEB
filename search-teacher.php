@@ -7,7 +7,7 @@ include('includes/dbconnection.php');
 <html lang="en">
 
 <head>
-    
+     
     <link rel="icon" href="img/favicon.png" type="image/png">
     <title> Teacher Search</title>
     <!-- Bootstrap CSS -->
