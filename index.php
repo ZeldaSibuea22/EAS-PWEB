@@ -5,7 +5,7 @@ include('includes/dbconnection.php');
 ?>
 <!doctype html>
 <html lang="en">
-
+ 
 <head>
 	
 	<title>Homepage</title>
