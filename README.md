@@ -12,3 +12,4 @@ This project was made to fulfill the final task of web programming course.
 ## Credential for admin panel :key:
 Username: admin <br>
 Password: Test@123
+ 
