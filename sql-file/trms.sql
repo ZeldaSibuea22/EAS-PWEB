@@ -79,19 +79,8 @@ CREATE TABLE `tblsubjects` (
 --
 
 INSERT INTO `tblsubjects` (`ID`, `Subject`, `CreationDate`) VALUES
-(1, 'Mathmetics', '2019-10-07 06:11:06'),
-(2, 'Physics', '2019-10-07 06:11:19'),
-(3, 'Chemistry', '2019-10-07 06:11:32'),
-(4, 'Biology', '2019-10-07 06:11:41'),
-(5, 'Hindi', '2019-10-07 06:11:49'),
-(6, 'English', '2019-10-07 06:11:56'),
-(7, 'Science', '2019-10-07 06:12:06'),
-(8, 'Social Science', '2019-10-07 06:12:19'),
-(9, 'Accounts', '2019-10-07 06:12:32'),
-(10, 'Arts', '2019-10-07 06:12:44'),
-(11, 'Musics', '2019-10-07 06:12:53'),
-(12, 'Sanskrit', '2019-10-07 06:13:08'),
-(13, 'Operating System (OS)', '2019-10-13 19:00:22');
+(1, 'PWEB', '2021-12-22 06:11:06'),
+(2, 'MPPL', '2021-12-22 06:12:06');
 
 -- --------------------------------------------------------
 
@@ -117,10 +106,9 @@ CREATE TABLE `tblteacher` (
 --
 
 INSERT INTO `tblteacher` (`ID`, `Name`, `Picture`, `Email`, `MobileNumber`, `Qualifications`, `Address`, `TeacherSub`, `JoiningDate`, `RegDate`) VALUES
-(1, 'Abir Singh', '7fdc1a630c238af0815181f9faa190f51570433828.jpg', 'abir@gmail.com', 4654654646, 'M.Tech(IT)', 'Flat No=646, Mayur Vihar Phase 1 New Delhi', 'Mathmetics', '2019-10-07', '2019-10-07 07:37:08'),
-(2, 'Gyan Tripathi', 'e9db84d0e11b5c26723e9951e4f7204b1570445433.jpg', 'gyan@gmail.com', 8989898988, 'B.TECH', 'H.No=B 3/4 Shivala Varanasi 221001', 'Accounts', '2019-10-02', '2019-10-07 07:45:52'),
-(3, 'Nikhil Singh', '2d99ae9e904f880eef8feb4e61882b791570445365.jpg', 'nik@gmail.com', 1213123213, 'B.ED(Commerce)', 'JK block H.no 3156 Laxmi Nagar', 'Arts', '2019-10-01', '2019-10-07 07:47:20'),
-(4, 'Anuj Kumar', '3640809ea9da2fb83a3f8ac12432d8551570993351.png', 'phpgurukulofficial@gmail.com', 9864723742, 'B.Tech, MBA', 'New Delhi India 110091', 'Operating System (OS)', '2019-10-01', '2019-10-13 19:01:45');
+(1, 'Sabrina Lydia', '7fdc1a630c238af0815181f9faa190f51570433828.jpg', 'abir@gmail.com', 4654654646, 'M.Tech(IT)', 'Flat No=646, Mayur Vihar Phase 1 New Delhi', 'PWEB', '2021-12-22', '2021-12-22 07:37:08'),
+(2, 'Amanda Rozi', 'e9db84d0e11b5c26723e9951e4f7204b1570445433.jpg', 'gyan@gmail.com', 8989898988, 'B.TECH', 'H.No=B 3/4 Shivala Varanasi 221001', 'MPPL', '2021-12-22', '2021-12-22 07:45:52'),
+(3, 'Zelda Elma', '2d99ae9e904f880eef8feb4e61882b791570445365.jpg', 'nik@gmail.com', 1213123213, 'B.ED(Commerce)', 'JK block H.no 3156 Laxmi Nagar', 'MPPL', '2021-12-22', '2021-12-22 07:47:20');
 
 --
 -- Indexes for dumped tables
