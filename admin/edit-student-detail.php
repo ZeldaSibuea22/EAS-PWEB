@@ -8,38 +8,42 @@ if (strlen($_SESSION['trmsaid']==0)) {
     if(isset($_POST['submit']))
   {
 $eid=$_GET['editid'];
-$tname=$_POST['tname'];
-$email=$_POST['email'];
-$mobnum=$_POST['mobilenumber'];
-$address=$_POST['address'];
-$quali=$_POST['qualifications'];
-$tsubjects=$_POST['tsubjects'];
-$tdate=$_POST['joiningdate'];
+$tname = $_POST["tname"];
+$admnumb = $_POST["admissionno"];
+$admdate = $_POST["admissiondate"];
+$gender = $_POST["gender"];
+$email = $_POST["email"];
+$mobnum = $_POST["mobilenumber"];
+$address = $_POST["address"];
+$propic = $_FILES["propic"]["name"];
 
- $sql="update tblteacher set Name=:tname,Email=:email,MobileNumber=:mobilenumber,Qualifications=:qualifications,Address=:address,TeacherSub= :tsubjects,JoiningDate=:joiningdate where ID=:eid";
+$sql="update tblstudents 
+        set name=:tname, admission_no=:admnumb, admission_date=:admdate, gender=:gender, email=:email, mobile=:mobnum, current_address=:address, photo=:propic
+        where id=:eid";
 
 $query = $dbh->prepare($sql);
-$query->bindParam(':tname',$tname,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
-$query->bindParam(':qualifications',$quali,PDO::PARAM_STR);
-$query->bindParam(':mobilenumber',$mobnum,PDO::PARAM_STR);
-$query->bindParam(':address',$address,PDO::PARAM_STR);
-$query->bindParam(':tsubjects',$tsubjects,PDO::PARAM_STR);
-$query->bindParam(':joiningdate',$tdate,PDO::PARAM_STR);
+$query->bindParam(":tname", $tname, PDO::PARAM_STR);
+$query->bindParam(":admnumb", $admnumb, PDO::PARAM_STR);
+$query->bindParam(":admdate", $admdate, PDO::PARAM_STR);
+$query->bindParam(":gender", $gender, PDO::PARAM_STR);
+$query->bindParam(":email", $email, PDO::PARAM_STR);
+$query->bindParam(":mobnum", $mobnum, PDO::PARAM_STR);
+$query->bindParam(":address", $address, PDO::PARAM_STR);
+$query->bindParam(":propic", $propic, PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
-    $query->execute();
+$query->execute();
 
-    echo '<script>alert("Teacher detail has been updated")</script>';
+    echo '<script>alert("Student detail has been updated")</script>';
 
-  }
-  ?>
+    }
+?>
 
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
    
-    <title>TRMS|| Update Teacher</title>
+    <title>Update Student</title>
   
     <link rel="apple-touch-icon" href="apple-icon.png">
   
@@ -73,7 +77,7 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Update Teacher Detail</h1>
+                        <h1>Update Student Detail</h1>
                     </div>
                 </div>
             </div>
@@ -82,7 +86,7 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="dashboard.php">Dashboard</a></li>
-                            <li><a href="manage-teacher.php">Update Teacher</a></li>
+                            <li><a href="manage-student.php">Update Student</a></li>
                             <li class="active">Update</li>
                         </ol>
                     </div>
@@ -103,13 +107,13 @@ $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header"><strong>Teacher</strong><small> Detail</small></div>
+                            <div class="card-header"><strong>Student</strong><small> Detail</small></div>
                             <form name="" method="post" action="" enctype="multipart/form-data">
                                 
                             <div class="card-body card-block">
  <?php
 $eid=$_GET['editid'];
-$sql="SELECT * from  tblteacher where ID=$eid";
+$sql="SELECT * from  tblstudents where id=$eid";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -118,63 +122,53 @@ if($query->rowCount() > 0)
 {
 foreach($results as $row)
 {               ?>
+<!-- picture -->
 <div class="form-group">
-<label for="company" class=" form-control-label">Teacher Name</label>
-<input type="text" name="tname" value="<?php  echo $row->Name;?>" class="form-control" id="tname" required="true">
+    <label for="profic" class=" form-control-label">Picture</label><br>
+    <img src="images/<?php echo $row->photo;?>" width="100px" value="<?php  echo $row->photo;?>"><br>
+    <a href="changeimage-student.php?editid=<?php echo $row->id;?>"> Edit Picture</a>
 </div>
 
+ <!-- name -->
+ <div class="form-group"><label for="tname" class=" form-control-label">Name</label><input type="text" name="tname" value="<?php  echo $row->name;?>" class="form-control" id="tname" required="true"></div>
+
+<!-- admission no -->
+<div class="form-group"><label for="admissionno" class=" form-control-label">Admission Number</label><input type="number" name="admissionno" value="<?php  echo $row->admission_no;?>" class="form-control" id="admissionno" required="true"></div>
+
+<!-- admission date -->
+<div class="form-group"><label for="admissiondate" class=" form-control-label">Admission Date</label><input type="date" name="admissiondate" id="admissiondate" value="<?php  echo $row->admission_date;?>" class="form-control" required="true"></div>
+
+<!-- gender -->
 <div class="form-group">
-<label for="company" class=" form-control-label">Teacher Pic</label> &nbsp;<img src="images/<?php echo $row->Picture;?>" width="100" height="100" value="<?php  echo $row->Picture;?>">
-<a href="changeimage.php?editid=<?php echo $row->ID;?>"> &nbsp; Edit Image</a>
+    <label for="">Gender</label><br>
+    <input type="radio" name="gender" value="Male" id="male" <?php if($row->gender == "Male") { echo "checked"; } ?> >
+    <label for="male">Male</label> <br>
+    <input type="radio" name="gender" value="Female" id="female" <?php if($row->gender == "Female") { echo "checked"; } ?> >
+    <label for="female">Female</label>
 </div>
 
-<div class="form-group">
-<label for="street" class=" form-control-label">Teacher Email ID</label>
-<input type="text" name="email" value="<?php  echo $row->Email;?>" id="email" class="form-control" required="true">
-</div>
+<!-- email -->
+<div class="form-group"><label for="email" class=" form-control-label">Email</label><input type="email" name="email" value="<?php  echo $row->email;?>" id="email" class="form-control" required="true"></div>
 
+
+<!-- mobile number -->
 <div class="row form-group">
-<div class="col-12">
-<div class="form-group">
-<label for="city" class=" form-control-label">Teacher Qualifications(Sepereted by comma)</label>
-<input type="text" name="qualifications" id="qualifications" value="<?php  echo $row->Qualifications;?>" class="form-control" required="true">
-</div>
-</div>
+    <div class="col-12">
+        <div class="form-group"><label for="mobilenumber" class=" form-control-label">Phone Number</label><input type="text" name="mobilenumber" id="mobilenumber" value="<?php  echo $row->mobile;?>" class="form-control" required="true" maxlength="15" pattern="[0-9]+"></div>
+    </div>
 </div>
 
+
+<!-- current address -->
 <div class="row form-group">
-<div class="col-12">
-<div class="form-group"><label for="city" class=" form-control-label">Teacher Mobile Number</label><input type="text" name="mobilenumber" id="mobilenumber" value="<?php  echo $row->MobileNumber;?>" class="form-control" required="true" maxlength="10" pattern="[0-9]+"></div>
-</div>
+    <div class="col-12">
+        <div class="form-group">
+            <label for="address" class=" form-control-label">Current Address</label>
+            <textarea type="text" name="address" id="address" value="" class="form-control" rows="4" cols="12" required="true"><?php  echo $row->current_address;?></textarea>
+        </div>
+    </div>
 </div>
 
-<div class="row form-group">
-<div class="col-12">
-<div class="form-group"><label for="city" class=" form-control-label">Teacher Subjects</label><select type="text" name="tsubjects" id="tsubjects" value="" class="form-control" required="true">
-<option value="<?php  echo $row->TeacherSub;?>"><?php  echo $row->TeacherSub;?></option>
-<?php 
-$sql2 = "SELECT * from   tblsubjects ";
-$query2 = $dbh -> prepare($sql2);
-$query2->execute();
-$result2=$query2->fetchAll(PDO::FETCH_OBJ);
-foreach($result2 as $row1)
-{          
-?>  
-<option value="<?php echo htmlentities($row1->Subject);?>"><?php echo htmlentities($row1->Subject);?></option>
- <?php } ?> 
-</select></div>
-</div>
- </div>
-
-<div class="row form-group">
-<div class="col-12">
-<div class="form-group"><label for="city" class=" form-control-label">Teacher Address</label><textarea type="text" name="address" id="address" class="form-control" rows="5" cols="12" required="true"><?php  echo $row->Address;?></textarea></div>
-</div>
-<div class="col-12">
-<div class="form-group"><label for="city" class=" form-control-label">Joining Date</label><input type="date" name="joiningdate" id="joiningdate" value="<?php  echo $row->JoiningDate;?>" class="form-control" required="true"></div>
-</div>
-</div>
-</div>
 <?php $cnt=$cnt+1;}} ?>
 
 <p style="text-align: center;"><button type="submit" class="btn btn-primary btn-sm" name="submit" id="submit"><i class="fa fa-dot-circle-o"></i> Update</button></p> 

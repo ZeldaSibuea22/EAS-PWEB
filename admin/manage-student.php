@@ -106,7 +106,7 @@ else
                     <td style="vertical-align: middle;"><?php echo htmlentities($row->gender); ?></td>
                     <td style="vertical-align: middle;"><?php echo htmlentities($row->email); ?></td>
                     <td style="vertical-align: middle;"><?php echo htmlentities($row->admission_no); ?></td>
-                    <td style="vertical-align: middle;"><a href="edit-student-detail.php?editid=<?php echo htmlentities($row->ID); ?>">Edit Details</a></td>
+                    <td style="vertical-align: middle;"><a href="edit-student-detail.php?editid=<?php echo htmlentities($row->id); ?>">Edit Details</a></td>
                 </tr>
                <?php $cnt = $cnt + 1;
         }
