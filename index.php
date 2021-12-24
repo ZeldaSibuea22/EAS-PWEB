@@ -8,7 +8,7 @@ include('includes/dbconnection.php');
 
 <head>
 	
-	<title> Home Page</title>
+	<title>Homepage</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -34,13 +34,12 @@ include('includes/dbconnection.php');
 						<div class="banner_content">
 							<h2>
 								Selamat datang!<br>
-								
 							</h2>
 				
 							<div class="search_course_wrap">
-<form action="search-teacher.php" class="form_box d-flex justify-content-between w-100" method="post" name="search">
-<input type="text" placeholder="Cari berdasarkan Subject" class="form-control" name="searchteacher">
-<button type="submit" class="btn search_course_btn" name="Cari" id="submit">Search</button>
+								<form action="search-teacher.php" class="form_box d-flex justify-content-between w-100" method="post" name="search">
+									<input type="text" placeholder="Cari berdasarkan Pelajaran" class="form-control" name="searchteacher">
+									<button type="submit" class="btn search_course_btn" name="Cari" id="submit">Cari</button>
 								</form>
 							</div>
 						</div>
