@@ -11,7 +11,7 @@ if (strlen($_SESSION['trmsaid']==0)) {
 <html class="no-js" lang="en">
 <head>
     
-    <title>TRMS Admin Dashboard</title>
+    <title>Admin Dashboard</title>
    
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -45,7 +45,7 @@ if (strlen($_SESSION['trmsaid']==0)) {
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Dashboard Admin</h1>
                     </div>
                 </div>
             </div>
@@ -80,12 +80,12 @@ if (strlen($_SESSION['trmsaid']==0)) {
                             </div>
                         </div>
                         <?php 
-$sql ="SELECT ID from tblsubjects ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$sublist=$query->rowCount();
-?>
+                        $sql ="SELECT ID from tblsubjects ";
+                        $query = $dbh -> prepare($sql);
+                        $query->execute();
+                        $results=$query->fetchAll(PDO::FETCH_OBJ);
+                        $sublist=$query->rowCount();
+                        ?>
                         <h4 class="mb-0">
                             <span class="count"><?php echo htmlentities($sublist);?></span>
                         </h4>
@@ -115,12 +115,12 @@ $sublist=$query->rowCount();
                             </div>
                         </div>
                         <?php 
-$sql1 ="SELECT ID from tblteacher ";
-$query1 = $dbh -> prepare($sql1);
-$query1->execute();
-$results1=$query1->fetchAll(PDO::FETCH_OBJ);
-$totalteacher=$query1->rowCount();
-?>
+                        $sql1 ="SELECT ID from tblteacher ";
+                        $query1 = $dbh -> prepare($sql1);
+                        $query1->execute();
+                        $results1=$query1->fetchAll(PDO::FETCH_OBJ);
+                        $totalteacher=$query1->rowCount();
+                        ?>
                         <h4 class="mb-0">
                             <span class="count"><?php echo htmlentities($totalteacher);?></span>
                         </h4>

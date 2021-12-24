@@ -31,7 +31,7 @@ echo "<script>alert('Invalid Details');</script>";
 <html class="no-js" lang="en">
 <head>
     
-    <title>TRMS Admin Login</title>
+    <title>Admin Login</title>
     
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -52,7 +52,7 @@ echo "<script>alert('Invalid Details');</script>";
 
 </head>
 
-<body class="bg-dark" style=" background-image: url('images/home-banner.jpg');">
+<body class="bg-dark" style="background-image: url('images/home-banner.jpg');">
 
 
     <div class="sufee-login d-flex align-content-center flex-wrap" >
@@ -66,22 +66,22 @@ echo "<script>alert('Invalid Details');</script>";
                     <form action="" method="post" name="login">
                         
                         <div class="form-group">
-                            <label>User Name</label>
-                            <input type="text" class="form-control" placeholder="User Name" required="true" name="username">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" required="true" name="username" id="username">
                         </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" name="password" required="true">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="password" required="true" id="password">
                         </div>
                                 <div class="checkbox">
                                     <label class="pull-left">
-                                <a href="../index.php">Back Home!!</a>
+                                <a href="../index.php">Back Home</a>
                                     <label class="pull-right">
                                 <a href="forgot-password.php" style="padding-left: 250px">Forgot Password?</a>
                             </label>
 
                                 </div>
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" name="login">Sign in</button>
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" name="login">Login</button>
                                 
                             
                     </form>
